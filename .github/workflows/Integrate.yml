@@ -1,0 +1,19 @@
+ใช้พื้นที่เก็บข้อมูลไป 84% … หากพื้นที่เก็บข้อมูลเต็ม คุณจะไม่สามารถบันทึกลงในไดรฟ์หรือสำรองข้อมูลไปยัง Google Photos รับพื้นที่เก็บข้อมูลขนาด 100 GB ในราคา ฿70.00 ฿17.00/เดือน เป็นเวลา 2 เดือน
+name: Node Continuous Integration
+
+on:
+  pull_request:
+    branches: [ main ]
+
+
+jobs:
+  test_pull_request:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 23
+      - run: npm ci
+      - run: npm test
+      - run: npm run build
